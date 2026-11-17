@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>District 27 | Place Your Order</title>
+
+    <link rel="stylesheet" href="order.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+
+<body>
+
+    <header class="order-header">
+        <a href="index.html" class="logo">DISTRICT <span>27</span></a>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="menu.html">MENU</a>
+            <a href="index.html#story">OUR STORY</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="order-hero">
+            <p class="eyebrow">GOOD TASTE STARTS HERE</p>
+            <h1>Make It <span>Yours.</span></h1>
+            <p>Choose your favourites. We'll take it from there.</p>
+        </section>
+
+        <section class="order-layout">
+            <div class="order-form">
+                <p class="eyebrow">01 — YOUR SELECTION</p>
+                <h2>What are you craving?</h2>
+
+                <label for="food">Choose your meal</label>
+                <select id="food">
+                    <option value="burger" data-price="8500">Signature Burger — ₦8,500</option>
+                    <option value="beef" data-price="12000">Grilled Beef — ₦12,000</option>
+                    <option value="shawarma" data-price="6500">Chicken Shawarma — ₦6,500</option>
+                </select>
+
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" min="1" value="1">
+
+                <p class="eyebrow section-label">02 — MAKE IT YOURS</p>
+                <h2>Any extras?</h2>
+                <p class="small-note">Customisation is completely optional.</p>
+
+                <div id="extrasContainer">
+                    <label class="extra-option">
+                        <input type="checkbox" class="extra" value="1000" data-name="Extra cheese">
+                        Extra cheese — ₦1,000
+                    </label>
+
+                    <label class="extra-option">
+                        <input type="checkbox" class="extra" value="700" data-name="Extra sauce">
+                        Extra sauce — ₦700
+                    </label>
+
+                    <label class="extra-option">
+                        <input type="checkbox" class="extra" value="1500" data-name="Extra toppings">
+                        Extra toppings — ₦1,500
+                    </label>
+                </div>
+
+                <p class="eyebrow section-label">03 — YOUR DETAILS</p>
+                <h2>Let's get to know you.</h2>
+
+                <label for="customerName">Full name</label>
+                <input type="text" id="customerName" placeholder="Enter your name">
+
+                <label for="phone">Phone number</label>
+                <input type="tel" id="phone" placeholder="Enter your phone number">
+
+                <label>How would you like to receive your order?</label>
+
+                <div class="delivery-options">
+                    <label>
+                        <input type="radio" name="orderType" value="Delivery" checked>
+                        DELIVERY
+                    </label>
+
+                    <label>
+                        <input type="radio" name="orderType" value="Pickup">
+                        PICKUP
+                    </label>
+                </div>
+
+                <div id="addressSection">
+                    <label for="address">Delivery address</label>
+                    <textarea id="address" placeholder="Enter your delivery address"></textarea>
+                </div>
+            </div>
+
+            <aside class="order-summary">
+                <p class="eyebrow">YOUR ORDER</p>
+                <h2>Order Summary</h2>
+
+                <div class="summary-line">
+                    <span id="summaryFood">Signature Burger</span>
+                    <span id="foodPrice">₦8,500</span>
+                </div>
+
+                <div class="summary-line">
+                    <span>Extras</span>
+                    <span id="extrasPrice">₦0</span>
+                </div>
+
+                <div class="summary-line">
+                    <span>Quantity</span>
+                    <span id="summaryQuantity">1</span>
+                </div>
+
+                <div class="summary-line">
+                    <span>Order type</span>
+                    <span id="summaryType">Delivery</span>
+                </div>
+
+                <div class="summary-total">
+                    <span>Total</span>
+                    <span id="totalPrice">₦8,500</span>
+                </div>
+
+                <button type="button" id="placeOrder">PLACE ORDER</button>
+
+                <p class="small-note">
+                    Demo preview. No real payment or order processing is connected.
+                </p>
+
+                <div id="demoStatus" style="display:none; margin-top:15px; color:#C5A46A; font-weight:600;">
+                    DEMO MODE ACTIVATED
+                </div>
+            </aside>
+        </section>
+
+        <div id="demoAccess" style="
+            display:none;
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,0.85);
+            z-index:9999;
+            align-items:center;
+            justify-content:center;
+            padding:20px;
+        ">
+            <div style="
+                background:#211C17;
+                border:1px solid #C5A46A;
+                padding:35px;
+                width:100%;
+                max-width:380px;
+                text-align:center;
+                color:#F2EDE3;
+            ">
+                <p style="color:#C5A46A; letter-spacing:3px;">DISTRICT 27</p>
+
+                <h2 style="font-family:'Cormorant Garamond',serif; font-size:32px;">
+                    Demo Access
+                </h2>
+
+                <p>Enter your private demo code.</p>
+
+                <input
+                    type="password"
+                    id="demoCode"
+                    placeholder="Enter code"
+                    style="width:100%; padding:14px; margin:20px 0; box-sizing:border-box; text-align:center;"
+                >
+
+                <button
+                    type="button"
+                    id="activateDemo"
+                    style="width:100%; padding:14px; background:#C5A46A; color:#211C17; border:none; cursor:pointer; font-weight:bold;"
+                >
+                    ACTIVATE DEMO
+                </button>
+
+                <p id="demoError" style="color:#ff7777;"></p>
+
+                <button
+                    type="button"
+                    id="closeDemo"
+                    style="margin-top:15px; background:transparent; border:none; color:#F2EDE3; cursor:pointer;"
+                >
+                    CLOSE
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="order-footer">
+        <p id="secretLogo" role="link" tabindex="0" style="cursor:pointer;">
+            DISTRICT 27
+        </p>
+        <span>A TASTE OF EXCELLENCE</span>
+    </footer>
+
+    <script>
+        // EMAILJS CONNECTION
+        emailjs.init({
+            publicKey: "va-2g0NdczbPXmqi8"
+        });
+
+        const EMAIL_SERVICE_ID = "Aliyu_test001";
+        const EMAIL_TEMPLATE_ID = "template_sku75ol";
+
+        const food = document.getElementById("food");
+        const quantity = document.getElementById("quantity");
+        const extras = document.querySelectorAll(".extra");
+
+        const addressSection = document.getElementById("addressSection");
+        const address = document.getElementById("address");
+        const placeOrderButton = document.getElementById("placeOrder");
+
+        const money = amount => "₦" + amount.toLocaleString("en-NG");
+
+        // READ FOOD SELECTED ON MENU PAGE
+        const params = new URLSearchParams(window.location.search);
+        const selectedFood = params.get("food");
+
+        if (selectedFood && ["burger", "beef", "shawarma"].includes(selectedFood)) {
+            food.value = selectedFood;
+        }
+
+        // UPDATE ORDER SUMMARY
+        function updateSummary() {
+            const selected = food.options[food.selectedIndex];
+            const price = Number(selected.dataset.price);
+            const qty = Math.max(1, Number(quantity.value) || 1);
+
+            let extrasTotal = 0;
+
+            extras.forEach(extra => {
+                if (extra.checked) {
+                    extrasTotal += Number(extra.value);
+                }
+            });
+
+            const orderType = document.querySelector(
+                'input[name="orderType"]:checked'
+            ).value;
+
+            document.getElementById("summaryFood").textContent =
+                selected.text.split(" — ")[0];
+
+            document.getElementById("foodPrice").textContent = money(price);
+            document.getElementById("extrasPrice").textContent = money(extrasTotal);
+            document.getElementById("summaryQuantity").textContent = qty;
+            document.getElementById("summaryType").textContent = orderType;
+            document.getElementById("totalPrice").textContent =
+                money((price + extrasTotal) * qty);
+
+            addressSection.style.display =
+                orderType === "Delivery" ? "block" : "none";
+
+            address.required = orderType === "Delivery";
+        }
+
+        food.addEventListener("change", updateSummary);
+        quantity.addEventListener("input", updateSummary);
+
+        extras.forEach(extra => {
+            extra.addEventListener("change", updateSummary);
+        });
+
+        document.querySelectorAll('input[name="orderType"]').forEach(option => {
+            option.addEventListener("change", updateSummary);
+        });
+
+        // FOOTER LOGO: ONE CLICK HOME, FIVE QUICK CLICKS DEMO ACCESS
+        const secretLogo = document.getElementById("secretLogo");
+
+        let logoClicks = 0;
+        let logoClickTimer;
+
+        function handleSecretLogoClick(event) {
+            event.preventDefault();
+            logoClicks++;
+            clearTimeout(logoClickTimer);
+
+            if (logoClicks >= 5) {
+                logoClicks = 0;
+                document.getElementById("demoAccess").style.display = "flex";
+                return;
+            }
+
+            logoClickTimer = setTimeout(() => {
+                logoClicks = 0;
+                window.location.href = "index.html";
+            }, 1500);
+        }
+
+        secretLogo.addEventListener("click", handleSecretLogoClick);
+
+        secretLogo.addEventListener("keydown", event => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                handleSecretLogoClick(event);
+            }
+        });
+
+        // CLOSE DEMO WINDOW
+        document.getElementById("closeDemo").addEventListener("click", () => {
+            document.getElementById("demoAccess").style.display = "none";
+        });
+
+        // CHECK DEMO CODE
+        document.getElementById("activateDemo").addEventListener("click", () => {
+            const code = document.getElementById("demoCode").value;
+
+            if (code === "0151") {
+                sessionStorage.setItem("district27Demo", "active");
+
+                document.getElementById("demoAccess").style.display = "none";
+                document.getElementById("demoStatus").style.display = "block";
+                document.getElementById("demoCode").value = "";
+                document.getElementById("demoError").textContent = "";
+
+                alert("Demo mode activated! You can now test orders without payment.");
+            } else {
+                document.getElementById("demoError").textContent =
+                    "Incorrect code. Please try again.";
+            }
+        });
+
+        // RESTORE DEMO MODE FOR THIS TAB
+        if (sessionStorage.getItem("district27Demo") === "active") {
+            document.getElementById("demoStatus").style.display = "block";
+        }
+
+        // PLACE ORDER AND SEND EMAIL
+        placeOrderButton.addEventListener("click", async () => {
+            const name = document.getElementById("customerName").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+
+            const orderType = document.querySelector(
+                'input[name="orderType"]:checked'
+            ).value;
+
+            if (!name || !phone) {
+                alert("Please enter your name and phone number.");
+                return;
+            }
+
+            if (orderType === "Delivery" && !address.value.trim()) {
+                alert("Please enter your delivery address.");
+                return;
+            }
+
+            if (sessionStorage.getItem("district27Demo") !== "active") {
+                alert(
+                    "Payment has not been connected yet.\n\n" +
+                    "This order has NOT been submitted or confirmed."
+                );
+                return;
+            }
+
+            const selected = food.options[food.selectedIndex];
+            const meal = selected.text.split(" — ")[0];
+            const qty = Math.max(1, Number(quantity.value) || 1);
+            const price = Number(selected.dataset.price);
+
+            let extrasTotal = 0;
+            const selectedExtras = [];
+
+            extras.forEach(extra => {
+                if (extra.checked) {
+                    extrasTotal += Number(extra.value);
+                    selectedExtras.push(extra.dataset.name);
+                }
+            });
+
+            const total = (price + extrasTotal) * qty;
+
+            const orderDetails = {
+                name,
+                phone,
+                meal,
+                quantity: qty,
+                orderType,
+                address: orderType === "Delivery" ? address.value.trim() : "",
+                total: money(total),
+                demo: true
+            };
+
+            const templateParams = {
+                customer_name: name,
+                customer_phone: phone,
+                meal: meal + (selectedExtras.length
+                    ? " (Extras: " + selectedExtras.join(", ") + ")"
+                    : ""),
+                quantity: qty,
+                order_type: orderType,
+                delivery_address: orderDetails.address || "Pickup",
+                total: money(total)
+            };
+
+            placeOrderButton.disabled = true;
+            placeOrderButton.textContent = "SENDING EMAIL...";
+
+            try {
+                await emailjs.send(
+                    EMAIL_SERVICE_ID,
+                    EMAIL_TEMPLATE_ID,
+                    templateParams
+                );
+
+                sessionStorage.setItem(
+                    "district27Order",
+                    JSON.stringify(orderDetails)
+                );
+
+                alert("Demo order email sent successfully!");
+
+                window.location.href = "confirmation.html";
+
+            } catch (error) {
+                console.error("EmailJS error:", error);
+
+                alert(
+                    "The email could not be sent.\n\n" +
+                    "Please check your EmailJS template settings and try again."
+                );
+
+                placeOrderButton.disabled = false;
+                placeOrderButton.textContent = "PLACE ORDER";
+            }
+        });
+
+        updateSummary();
+    </script>
+
+</body>
+</html>

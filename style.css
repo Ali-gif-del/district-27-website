@@ -1,0 +1,485 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    background: #211C17;
+    color: #F2EDE3;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* NAVIGATION */
+
+.navbar {
+    min-height: 95px;
+    padding: 25px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    border-bottom: 1px solid rgba(197,164,106,.2);
+    animation: fadeDown 1s ease both;
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 27px;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+.logo span {
+    color: #C5A46A;
+}
+
+nav {
+    display: flex;
+    gap: 35px;
+}
+
+nav a {
+    font-size: 10px;
+    letter-spacing: 2px;
+    transition: color .3s ease;
+}
+
+nav a:hover {
+    color: #C5A46A;
+}
+
+/* BUTTONS */
+
+.nav-button,
+.primary-button {
+    background: #C5A46A;
+    color: #211C17;
+    padding: 16px 25px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    display: inline-block;
+    transition: all .35s ease;
+}
+
+.nav-button:hover,
+.primary-button:hover {
+    background: #F2EDE3;
+    transform: translateY(-4px);
+}
+
+/* HERO BACKGROUND */
+
+.hero {
+    min-height: 850px;
+    padding: 150px 7% 90px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(20,15,11,.45) 0%,
+            rgba(20,15,11,.20) 40%,
+            rgba(20,15,11,.05) 100%
+        ),
+        url("images/hero-food.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    animation: backgroundReveal 1.5s ease both;
+}
+
+/* HERO TEXT */
+
+.hero-content {
+    max-width: 550px;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 1.2s ease .3s both;
+}
+
+.eyebrow {
+    color: #C5A46A;
+    font-size: 10px;
+    letter-spacing: 4px;
+    margin-bottom: 27px;
+}
+
+.hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(65px, 7vw, 105px);
+    line-height: .95;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.hero h1 span {
+    display: block;
+    color: #C5A46A;
+    font-style: italic;
+}
+
+.hero-description {
+    max-width: 380px;
+    color: #E0D6C9;
+    font-size: 13px;
+    line-height: 2;
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.secondary-button {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    border-bottom: 1px solid #C5A46A;
+    padding-bottom: 8px;
+    transition: color .3s ease;
+}
+
+.secondary-button:hover {
+    color: #C5A46A;
+}
+
+.hero-note {
+    color: #C5A46A;
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-top: 65px;
+}
+
+/* SCROLL INDICATOR */
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 35px;
+    left: 7%;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #C9BFB1;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.scroll-indicator span {
+    width: 45px;
+    height: 1px;
+    background: #C5A46A;
+}
+
+/* INTRODUCTION */
+
+.intro {
+    padding: 110px 20px;
+    text-align: center;
+    background: #30251E;
+}
+
+.intro h2,
+.menu-preview h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 6vw, 65px);
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.intro h2 span {
+    display: block;
+    color: #C5A46A;
+    font-style: italic;
+}
+
+.intro > p:last-child,
+.menu-preview > p:not(.eyebrow) {
+    max-width: 480px;
+    margin: 25px auto 0;
+    color: #C9BFB1;
+    font-size: 13px;
+    line-height: 2;
+}
+
+/* MENU PREVIEW */
+
+.menu-preview {
+    text-align: center;
+    padding: 110px 20px;
+}
+
+.menu-preview .primary-button {
+    margin-top: 35px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 55px 20px;
+    border-top: 1px solid rgba(197,164,106,.2);
+}
+
+footer > p {
+    margin-top: 15px;
+    color: #C5A46A;
+    font-size: 9px;
+    letter-spacing: 3px;
+}
+
+footer .copyright {
+    color: #8C8174;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes backgroundReveal {
+    from {
+        opacity: .5;
+        transform: scale(1.03);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* TABLETS */
+
+@media (max-width: 850px) {
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .hero {
+        min-height: 750px;
+        background-position: center;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        min-height: auto;
+        padding: 20px 5%;
+        gap: 17px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .nav-button {
+        padding: 12px 14px;
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    nav {
+        gap: 14px;
+    }
+
+    nav a {
+        font-size: 9px;
+        letter-spacing: 1.3px;
+    }
+
+    .hero {
+        min-height: 720px;
+        padding: 165px 6% 85px;
+        background-position: 65% center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .eyebrow {
+        font-size: 9px;
+        letter-spacing: 3px;
+        margin-bottom: 22px;
+    }
+
+    .hero h1 {
+        font-size: clamp(52px, 13vw, 70px);
+        line-height: .98;
+    }
+
+    .hero-description {
+        max-width: 340px;
+        font-size: 12px;
+        line-height: 1.9;
+    }
+
+    .hero-buttons {
+        gap: 18px;
+    }
+
+    .hero-note {
+        margin-top: 45px;
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
+
+    .scroll-indicator {
+        left: 6%;
+        bottom: 25px;
+        font-size: 8px;
+    }
+
+    .intro {
+        padding: 75px 6%;
+    }
+
+    .intro h2,
+    .menu-preview h2 {
+        font-size: clamp(39px, 10vw, 52px);
+    }
+
+    .intro > p:last-child,
+    .menu-preview > p:not(.eyebrow) {
+        font-size: 12px;
+        line-height: 1.9;
+    }
+
+    .menu-preview {
+        padding: 75px 6%;
+    }
+
+    .menu-preview .primary-button {
+        padding: 15px 19px;
+        font-size: 9px;
+    }
+
+    footer {
+        padding: 40px 15px;
+    }
+}
+
+/* SMALL PHONES */
+
+@media (max-width: 380px) {
+
+    .navbar {
+        padding: 18px 4%;
+    }
+
+    .logo {
+        font-size: 21px;
+        letter-spacing: 2px;
+    }
+
+    .nav-button {
+        padding: 11px 10px;
+        font-size: 7px;
+    }
+
+    nav {
+        gap: 11px;
+    }
+
+    nav a {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .hero {
+        min-height: 680px;
+        padding: 155px 5% 75px;
+        background-position: 65% center;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .hero-description {
+        font-size: 11px;
+    }
+
+    .hero-buttons {
+        gap: 14px;
+    }
+
+    .primary-button {
+        padding: 14px 16px;
+        font-size: 9px;
+    }
+
+    .hero-note {
+        font-size: 7px;
+        letter-spacing: 1.5px;
+    }
+
+    .intro,
+    .menu-preview {
+        padding: 65px 5%;
+    }
+}

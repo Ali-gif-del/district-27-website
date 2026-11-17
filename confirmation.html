@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>District 27 | Order Confirmation</title>
+
+    <link rel="stylesheet" href="order.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        .confirmation {
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+
+        .confirmation-card {
+            width: 100%;
+            max-width: 650px;
+            padding: 55px 35px;
+            text-align: center;
+            background: #30251E;
+            border: 1px solid #C5A46A;
+        }
+
+        .confirmation-icon {
+            font-size: 55px;
+            color: #C5A46A;
+        }
+
+        .confirmation h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 55px;
+            color: #F2EDE3;
+            margin: 15px 0;
+        }
+
+        .confirmation h1 span {
+            color: #C5A46A;
+        }
+
+        .confirmation p {
+            color: #F2EDE3;
+            line-height: 1.8;
+        }
+
+        .order-details {
+            text-align: left;
+            margin: 30px 0;
+            padding: 25px;
+            background: #211C17;
+            color: #F2EDE3;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .detail-row span:last-child {
+            text-align: right;
+        }
+
+        .confirmation-total {
+            color: #C5A46A;
+            font-weight: bold;
+            border-top: 1px solid #C5A46A;
+            padding-top: 20px;
+        }
+
+        .home-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background: #C5A46A;
+            color: #211C17;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media(max-width: 500px) {
+            .confirmation h1 {
+                font-size: 42px;
+            }
+
+            .confirmation-card {
+                padding: 35px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="order-header">
+        <a href="index.html" class="logo">
+            DISTRICT <span>27</span>
+        </a>
+
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="menu.html">MENU</a>
+        </nav>
+    </header>
+
+    <main class="confirmation">
+
+        <div class="confirmation-card">
+
+            <div class="confirmation-icon">✓</div>
+
+            <p class="eyebrow">DISTRICT 27</p>
+
+            <h1>Thank You<span>.</span></h1>
+
+            <p id="confirmationMessage">
+                Your demo order has been received successfully.
+            </p>
+
+            <div class="order-details">
+
+                <div class="detail-row">
+                    <span>Customer</span>
+                    <span id="customerName">—</span>
+                </div>
+
+                <div class="detail-row">
+                    <span>Meal</span>
+                    <span id="mealName">—</span>
+                </div>
+
+                <div class="detail-row">
+                    <span>Quantity</span>
+                    <span id="quantity">—</span>
+                </div>
+
+                <div class="detail-row">
+                    <span>Order type</span>
+                    <span id="orderType">—</span>
+                </div>
+
+                <div class="detail-row confirmation-total">
+                    <span>Total</span>
+                    <span id="totalPrice">—</span>
+                </div>
+
+            </div>
+
+            <p id="demoNotice">
+                This is a demonstration. No real payment was made and no real order was submitted.
+            </p>
+
+            <a href="index.html" class="home-button">
+                BACK TO HOMEPAGE
+            </a>
+
+        </div>
+
+    </main>
+
+    <footer class="order-footer">
+        <p>DISTRICT 27</p>
+        <span>A TASTE OF EXCELLENCE</span>
+    </footer>
+
+    <script>
+
+        const order = JSON.parse(
+            sessionStorage.getItem("district27Order") || "null"
+        );
+
+        if (order) {
+            document.getElementById("customerName").textContent =
+                order.name || "—";
+
+            document.getElementById("mealName").textContent =
+                order.meal || "—";
+
+            document.getElementById("quantity").textContent =
+                order.quantity || "—";
+
+            document.getElementById("orderType").textContent =
+                order.orderType || "—";
+
+            document.getElementById("totalPrice").textContent =
+                order.total || "—";
+        } else {
+            document.getElementById("confirmationMessage").textContent =
+                "No order details were found. Please return to the order page.";
+
+            document.getElementById("demoNotice").textContent =
+                "This page is a website preview.";
+        }
+
+    </script>
+
+</body>
+</html>
