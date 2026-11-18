@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /confirmation.html
+
+Sitemap: https://ali-gif-del.github.io/district-27-website/sitemap.xml
